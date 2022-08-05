@@ -11,6 +11,15 @@ include('../includes/conexao.php');
           <div class="panel-heading">
             <h3 class="panel-title">CRUD Operation Using PHP PDO</h3> </div>
           <div class="panel-body">
+          <?php
+          $query = "SELECT * from tb_pratos";
+          $res = mysqli_query($conexao,$query);
+
+          // conta o numero de registros
+          $total = mysqli_num_rows($res);
+
+          ?>
+
             <table class="table table-bordered">
               <thead>
                 <tr>
@@ -26,11 +35,24 @@ include('../includes/conexao.php');
                 </tr>
               </thead>
               <tbody>
-
-             
-                    <td><button><a href="">Alterar</button></a></td>
+      <?php
+      // adiciona uma linha e retorna para a execução 
+      while($dados=mysqli_fetch_array($res)){
+        $id = $dados['id']
+        ?>
+                  <tr>
+                    <td><?php echo $dados ['id'] ?></td>
+                    <td><?php echo $dados ['codigo'] ?></td>
+                    <td><?php echo $dados ['nome'] ?></td>
+                    <td><?php echo $dados ['categoria'] ?></td>
+                    <td><?php echo $dados ['descricao'] ?></td>
+                    <td><?php echo $dados ['preco'] ?></td>
+                    <td><?php echo $dados ['calorias'] ?></td>
+                    <td><?php echo $dados ['destaque'] ?></td>
+                    <td><button><a href="editar_pratos.php?idprato=<?php echo $id ?>">Alterar</button></a></td>
                     <td><button><a href="">Excluir</button></a></td>
-                  </tr>  
+                  </tr> 
+                  <?php } ?> 
               </tbody>
             </table>
           </div>

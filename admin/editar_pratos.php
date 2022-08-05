@@ -1,5 +1,5 @@
 <?php
-include('../include/conexao.php');
+include('../includes/conexao.php');
 ?>
 
 <html>
@@ -32,6 +32,18 @@ include('../include/conexao.php');
     </head>
     <body>
 
+    <?php 
+    $id = $_GET['idprato'];
+
+    // monta a quary sql
+    $sql = "SELECT * FROM tb_pratos WHERE id = $id";
+    // executa a query no banco
+    $res = $conexao->query($sql);
+    // organiza os resultados do banco em linhas 
+    $dados = mysqli_fetch_array($res);
+    
+    ?>
+
         <main class="container">
         <h1>Edição do prato</h1>
         <br>
@@ -39,14 +51,14 @@ include('../include/conexao.php');
             <div class="form-group">
                 <label class="control-label col-sm-3">Nome do Prato*:</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="nprato" id="nprato" value="" placeholder="Nome do prato">
+                    <input type="text" class="form-control" name="nome" id="nprato" value="<?php echo $dados['nome']?>" placeholder="Nome do prato">
                     <div class="help-block with-errors"></div>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-3">Código*:</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="codigo" id="codigo" value="" placeholder="Insira o código">
+                    <input type="text" class="form-control" name="codigo" id="codigo" value="<?php echo $dados['codigo']?>" placeholder="Insira o código">
                     <div class="help-block with-errors"></div>
                 </div>
             </div>
@@ -54,8 +66,7 @@ include('../include/conexao.php');
                     <label class="control-label col-sm-3">Categoria*:</label>
                     <div class="col-sm-9">
                         <select class="form-control" name="categoria" id="categoria">
-                            <option value="" selected="selected" disabled="disabled"></option>
-                            <option value="entrada">Entrada</option>
+                            <option value="entrada" <?php if($dados['categoria']== 'entrada'){echo 'selected="selected"';}?>>Entrada</option>
                             <option value="prato_principal">Prato principal</option>
                             <option value="sobremesa" >Sobremesa</option>
                         </select>
@@ -66,7 +77,7 @@ include('../include/conexao.php');
             <div class="form-group">
                 <label class="control-label col-sm-3">Preço*:</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="preco" id="preco" value="" placeholder="Insira o preço">
+                    <input type="text" class="form-control" name="preco" id="preco" value="<?php echo $dados['preco']?>" placeholder="Insira o preço">
                     <div class="help-block with-errors"></div>
                 </div>
             </div>
@@ -81,7 +92,7 @@ include('../include/conexao.php');
             <div class="form-group">
                 <label class="control-label col-sm-3">Caloria*:</label>
                 <div class="col-sm-9">
-                    <input type="number" class="form-control" name="caloria" id="caloria" value="" placeholder="Insira a caloria">
+                    <input type="number" class="form-control" name="calorias" id="caloria" value="<?php echo $dados['calorias']?>" placeholder="Insira a caloria">
                     <div class="help-block with-errors"></div>
                 </div>
             </div>
