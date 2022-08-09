@@ -47,7 +47,7 @@ include('../includes/conexao.php');
         <main class="container">
         <h1>Edição do prato</h1>
         <br>
-        <form class="form-horizontal" action="" method="post" role="form" data-toggle="validator" enctype = "multipart/form-data">
+        <form class="form-horizontal" action="atualizar_pratos.php?idprato=<?php echo $id ?>" method="post" role="form" data-toggle="validator" enctype = "multipart/form-data">
             <div class="form-group">
                 <label class="control-label col-sm-3">Nome do Prato*:</label>
                 <div class="col-sm-9">
@@ -66,9 +66,12 @@ include('../includes/conexao.php');
                     <label class="control-label col-sm-3">Categoria*:</label>
                     <div class="col-sm-9">
                         <select class="form-control" name="categoria" id="categoria">
+
                             <option value="entrada" <?php if($dados['categoria']== 'entrada'){echo 'selected="selected"';}?>>Entrada</option>
-                            <option value="prato_principal">Prato principal</option>
-                            <option value="sobremesa" >Sobremesa</option>
+
+                            <option value="prato_principal" <?php if ($dados['categoria']== 'prato_principal'){echo 'selected="selected"';}?>>Prato principal</option>
+
+                            <option value="sobremesa" <?php if ($dados['sobremesa']== 'sobremesa'){echo 'selected="selected"';}?>>Sobremesa</option>
                         </select>
                         <div class="help-block with-errors"></div>
                     </div>
@@ -85,7 +88,7 @@ include('../includes/conexao.php');
             <label class="control-label col-sm-3">Descrição*:</label>
                 <div class="col-sm-9">
                     <textarea class="form-control" id="exampleTextarea" rows="6" 
-                              id="descricao" name="descricao" placeholder="sua mensagem" required></textarea>
+                              id="descricao" name="descricao" placeholder="sua mensagem" required><?php echo $dados['descricao']?></textarea>
                     <div class="help-block with-errors"></div>
                 </div>
             </div>
@@ -108,8 +111,8 @@ include('../includes/conexao.php');
                     <div class="col-sm-9">
                         <select class="form-control" name="destaque" >
                             <option value="" disabled="disabled">Quer o prato em destaque?</option>
-                            <option value="0" >Não</option>
-                            <option value="1" >Sim</option>
+                            <option value="0" <?php if($dados ['destaque']== 0){echo 'selected="selected"';}?>>Não</option>
+                            <option value="1" <?php if($dados ['destaque']== 1){echo 'selected="seleted"';}?>>Sim</option>
                         </select>
                         <div class="help-block with-errors"></div>
                     </div>
