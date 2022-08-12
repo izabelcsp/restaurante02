@@ -36,7 +36,7 @@
         <h1>Formulário de Contato</h1>
         <p>Acrescente um email válido para receber o email teste!</p>
         <br>
-        <form class="form-horizontal" action="cadastrar-pratos.php" method="post" role="form" data-toggle="">
+        <form class="form-horizontal" action="cadastrar-pratos.php" method="post" role="form" data-toggle="validator" enctype="multipart/form-data">
             <div class="form-group">
                 <label class="control-label col-sm-3">Nome do Prato:</label>
                 <div class="col-sm-9">
