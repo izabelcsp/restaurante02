@@ -6,7 +6,7 @@
 
     $sql = "SELECT * FROM tb_pratos WHERE codigo = '$cprato'";
 
-    $dados = $conexao->query($sql);
+    $result = $conexao->query($sql);
 
     $dados = $result->fetch_assoc();
 
@@ -27,7 +27,7 @@
                         <p><?php echo $dados['descricao']?></p>
 
                         <h5><b>Preço: </b><?php echo $dados['preco']?></h5>
-                        <h5><b>Calorias: </b><?php echo $dados['caloria']?></h5> 
+                        <h5><b>Calorias: </b><?php echo $dados['calorias']?></h5> 
                     </div>
 
                     <div class="product-picture small-12 large-7 columns no-padding">

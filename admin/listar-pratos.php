@@ -50,7 +50,7 @@ include('../includes/conexao.php');
                     <td><?php echo $dados ['calorias'] ?></td>
                     <td><?php echo $dados ['destaque'] ?></td>
                     <td><button><a href="editar_pratos.php?idprato=<?php echo $id ?>">Alterar</button></a></td>
-                    <td><button><a href="">Excluir</button></a></td>
+                    <td><button><a href="deletar-pratos.php?idprato=<?php echo $id ?>">Excluir</button></a></td>
                   </tr> 
                   <?php } ?> 
               </tbody>

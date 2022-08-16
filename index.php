@@ -1,5 +1,6 @@
 <?php
     include('includes/cabecalho.php');
+    include('includes/conexao.php');
 ?>
 
     <div class="ghost-element">
@@ -83,23 +84,32 @@
         </div>
 
         <div class="global-page-container">
-
-
+     
             <div class="slider-cardapio">
                 <div class="slider-002 small-12 small-centered columns">
+                    <?php 
+                    $sql2 = "SELECT * FROM tb_pratos WHERE 
+                        destaque = 1 ";
+
+                        $result2 = $conexao->query($sql2);
+                        if ($result2->num_rows > 0) {
+                            while ($row2 = $result2->fetch_assoc()) {
+                        ?>
+
+              
 
                     <div class="cardapio-item-outer bounce-hover small-10 medium-4 columns">
                         <div class="cardapio-item">
-                            <a href="camarao-alho.html">
+                            <a href="prato.php?prato=<?php echo $row2['codigo']?>">
 
                                 <div class="cardapio-item-image">
-                                    <img src="img/cardapio/camarao-alho.jpg" alt="camarao" />
+                                    <img src="img/cardapio/<?php echo $row2['codigo']?>.jpg" alt="<?php echo $row2['nome']?>" />
                                 </div>
 
                                 <div class="item-info">
 
 
-                                    <div class="title">Camarão ao Alho</div>
+                                    <div class="title"><?php echo $row2['nome']?></div>
                                 </div>
 
                                 <div class="gradient-filter">
@@ -109,74 +119,18 @@
                         </div>
                     </div>
 
-                    <div class="cardapio-item-outer bounce-hover small-10 medium-4 columns">
-                        <div class="cardapio-item">
-                            <a href="picanha-brasileira.html">
-
-                                <div class="cardapio-item-image">
-                                    <img src="img/cardapio/picanha-brasileira.jpg" alt="barbecue" />
-                                </div>
-
-                                <div class="item-info">
-
-
-                                    <div class="title">Picanha à Brasileira</div>
-                                </div>
-
-                                <div class="gradient-filter">
-                                </div>
-
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="cardapio-item-outer bounce-hover small-10 medium-4 columns">
-                        <div class="cardapio-item">
-                            <a href="cheesecake-cereja.html">
-
-                                <div class="cardapio-item-image">
-                                    <img src="img/cardapio/cheesecake-cereja.jpg" alt="cheesecake" />
-                                </div>
-
-                                <div class="item-info">
-
-
-                                    <div class="title">Cheesecake de cereja</div>
-                                </div>
-
-                                <div class="gradient-filter">
-                                </div>
-
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="cardapio-item-outer bounce-hover small-10 medium-4 columns">
-                        <div class="cardapio-item">
-                            <a href="salmao-legumes.html">
-
-                                <div class="cardapio-item-image">
-                                    <img src="img/cardapio/salmao-legumes.jpg" alt="salmao" />
-                                </div>
-
-                                <div class="item-info">
-
-
-                                    <div class="title">Salmão aos Legumes</div>
-                                </div>
-
-                                <div class="gradient-filter">
-                                </div>
-
-                            </a>
-                        </div>
-                    </div>
-
-
+                    <?php
+            }
+        } else {
+            echo 'não foi';
+        }
+        ?>
 
                 </div>
             </div>
         </div>
+
+
     </div>
 
     <div id="contact-us" class="contact-us small-11 large-12 columns no-padding small-centered">
