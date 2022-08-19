@@ -145,7 +145,7 @@
 
             <div class="reservation-form small-12 columns no-padding">
 
-                <form>
+                <form action="admin/cadastrar_reserva.php" method="post">
 
                     <div class="form-part1 small-12 large-8 xlarge-7 columns no-padding">
 
@@ -161,9 +161,9 @@
                     <div class="form-part2 small-12 large-3 xlarge-3 end columns no-padding">
                         <input type="text" name="telefone" class="field" placeholder="Telefone" />
 
-                        <input type="datetime-local" name="data" class="field" placeholder="Data e hora" />
+                        <input type="datetime-local" name="data_reserva" class="field" placeholder="Data e hora" />
 
-                        <input type="text" name="data" class="field" placeholder="Número de pessoas" />
+                        <input type="text" name="numero_pessoas" class="field" placeholder="Número de pessoas" />
 
                         <input type="submit" name="submit" value="Reservar" />
 
